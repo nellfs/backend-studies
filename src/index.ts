@@ -1,8 +1,37 @@
 import express, { Express, Request, Response } from "express";
+import bodyParser from "body-parser";
+import jwt, { Secret, VerifyCallback, VerifyErrors } from "jsonwebtoken";
+
 const app: Express = express();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+const SECRET = "leakedsecret";
+
+function verifyJWT<T>(req: Request, res: Response) {
+  const token = req.headers["x-access-token"];
+  jwt.verify(
+    token,
+    SECRET,
+    (err: VerifyErrors | null, decoded: T | undefined) => {
+      if (err) return res.status(401).end();
+    }
+  );
+}
+
+app.get("/hello", (req: Request, res: Response) => {
+  return res.json("Hello World!");
+});
+
+app.post("/login", (req: Request, res: Response) => {
+  const { name, password }: { name: string; password: string } = req.body;
+  if (name === "admin" && password === "123") {
+    const token = jwt.sign({ userId: 1 }, SECRET, { expiresIn: 300 });
+    return res.json({ auth: true, token });
+  }
+
+  res.status(401).end();
 });
 
 app.listen(3000);
