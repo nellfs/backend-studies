@@ -9,17 +9,6 @@ app.use(bodyParser.json());
 
 const SECRET = "leakedsecret";
 
-function verifyJWT<T>(req: Request, res: Response) {
-  const token = req.headers["x-access-token"];
-  jwt.verify(
-    token,
-    SECRET,
-    (err: VerifyErrors | null, decoded: T | undefined) => {
-      if (err) return res.status(401).end();
-    }
-  );
-}
-
 app.get("/hello", (req: Request, res: Response) => {
   return res.json("Hello World!");
 });
