@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
-import jwt, { Secret, VerifyCallback, VerifyErrors } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const app: Express = express();
 
