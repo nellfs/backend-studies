@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@config/*": ["src/config/*"],
       "@modules/*": ["src/modules/*"],
