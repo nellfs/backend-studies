@@ -1,1 +1,1 @@
-/src/shared/typeorm/migrations/*.ts
+/src/**/migrations/*.ts
