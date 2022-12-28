@@ -8,5 +8,6 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  migrations: ['./src/shared/typeorm/migrations/*.{ts,js}'],
+  entities: ['./src/**/entities/*{ts,js}'],
+  migrations: ['./src/migrations/*.{ts,js}'],
 });
