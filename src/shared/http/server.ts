@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import routes from './routes';
 
-import '@shared/typeorm';
+import '../typeorm';
 import { errorMiddleware } from 'src/middlewares/error';
 
 const app = express();
