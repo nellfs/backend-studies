@@ -1,4 +1,4 @@
-import { Request } from 'express';
+import { Request, Response } from 'express';
 import ListProductService from '../services/ListProductService';
 import ShowProductService from '../services/ShowProductService';
 import CreateProductService from '../services/CreateProductService';
@@ -51,5 +51,9 @@ export default class ProductsController {
     const { id } = request.params;
 
     const deleteProduct = new DeleteProductService();
+
+    await deleteProduct.execute({ id });
+
+    return response.json([]);
   }
 }

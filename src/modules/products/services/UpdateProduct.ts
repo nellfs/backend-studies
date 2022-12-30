@@ -1,6 +1,7 @@
 import { ProductRepository } from '../typeorm/repositories/ProductRepository';
 import { Product } from '../typeorm/entities/Product';
 import AppError from '@shared/errors/AppError';
+import { isConstructorDeclaration } from 'typescript';
 
 interface IRequest {
   id: string;
@@ -16,7 +17,7 @@ class UpdateProductService {
     quantity,
   }: IRequest): Promise<Product> {
     const productsRepository = ProductRepository;
-    const productExists = productsRepository.findByName(name);
+    const productExists = await productsRepository.findByName(name);
 
     const product = await productsRepository.findOneBy({ id });
 
