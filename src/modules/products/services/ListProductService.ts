@@ -1,4 +1,4 @@
-import { ProductRepository } from '../typeorm/repositories/ProductRepository';
+import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
 import { Product } from '../typeorm/entities/Product';
 
 class ListProductService {

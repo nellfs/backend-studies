@@ -1,4 +1,4 @@
-import { ProductRepository } from '../typeorm/repositories/ProductRepository';
+import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
 import AppError from '@shared/errors/AppError';
 
 interface IRequest {
